@@ -10,24 +10,10 @@
                  formControlName = "from"
                  [matAutocomplete]="auto1">
           <mat-autocomplete #auto1="matAutocomplete">
-              <mat-option *ngFor = "let data of airportListDropdown" [value]="data.attributes.airportName">
-                <!-- {{data.attributes.airportName}} -->
-          
-          <div class="mt-2">
-                    <p>{{data.attributes.airportCity}},  {{data.attributes.countryName}},  {{data.attributes.countryCode}}
-                    <br><span style="color: lightgray; font-size: 12px;">{{data.attributes.airportName}}</span>
-                    </p>
-                    
-                </div>
-                <!-- <mat-card style="display: block;">
-                  <mat-card-header>
-                    <mat-card-title> {{data.attributes.airportCity}},  {{data.attributes.countryName}},  {{data.attributes.countryCode}}</mat-card-title>
-                    <mat-card-subtitle>{{data.attributes.airportName}}</mat-card-subtitle>
-                  </mat-card-header>
-                  <mat-card-actions>
-                    <button mat-button>Flag</button>
-                  </mat-card-actions>
-                </mat-card> -->
+             
+              <mat-option *ngFor = "let data of filteredOptionsFrom | async" [value]="data.attributes.airportName" class="p-3">
+                <mat-card-title> {{data.attributes.airportCity}},  {{data.attributes.countryName}},  {{data.attributes.countryCode}}</mat-card-title>
+                <mat-card-subtitle>{{data.attributes.airportName}}</mat-card-subtitle>
               </mat-option>
             </mat-autocomplete>
         </mat-form-field>
@@ -43,8 +29,12 @@
                  formControlName = "to"
                  [matAutocomplete]="auto2">
           <mat-autocomplete #auto2="matAutocomplete">
-              <mat-option *ngFor = "let option2 of filteredOptionsTo | async" [value]="option2">{{option2}}</mat-option>
-          </mat-autocomplete>
+              <!-- <mat-option *ngFor = "let option2 of filteredOptionsTo | async" [value]="option2.attributes.airportName">{{option2.attributes.airportName}}</mat-option> -->
+              <mat-option *ngFor = "let data of filteredOptionsTo | async" [value]="data.attributes.airportName" class="p-3">
+                <mat-card-title> {{data.attributes.airportCity}},  {{data.attributes.countryName}},  {{data.attributes.countryCode}}</mat-card-title>
+                <mat-card-subtitle>{{data.attributes.airportName}}</mat-card-subtitle>
+              </mat-option>
+            </mat-autocomplete>
         </mat-form-field>
       </div>
 

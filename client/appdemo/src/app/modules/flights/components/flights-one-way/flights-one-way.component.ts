@@ -17,9 +17,9 @@ export class FlightsOneWayComponent implements OnInit, OnDestroy{
   maxDate = new Date(new Date().getFullYear() + 1, new Date().getMonth(), new Date().getDate());
 
   // auto-complete
-  options: string[] = ["One", "Two", "Three"];
-  filteredOptionsFrom!: Observable<string[]> | undefined;
-  filteredOptionsTo!: Observable<string[]> | undefined;
+  // options: string[] = ["One", "Two", "Three"];
+  filteredOptionsFrom!: Observable<any> | undefined;
+  filteredOptionsTo!: Observable<any> | undefined;
   concessionTypesDropdown: any;
   classTypesDropdown: any;
   airportListDropdown: any;
@@ -31,7 +31,6 @@ export class FlightsOneWayComponent implements OnInit, OnDestroy{
 
   ngOnInit() {
     this.createForm();
-    this.setAutoComplete();
     this.getAirports();
     this.getClassTypes();
     this.getConcessionTypes();
@@ -51,8 +50,10 @@ export class FlightsOneWayComponent implements OnInit, OnDestroy{
 
   getAirports() {
     this.getAirportsSubscription = this.airService.getAirports().subscribe((response: IAirportResponse) => {
-      console.log('==> airports', response.responsePayload.data);
-      this.airportListDropdown = response.responsePayload.data
+      // console.log('==> airports', response.responsePayload.data);
+      this.airportListDropdown = response.responsePayload.data;
+      this.setAutoComplete();
+
     })
   }
 
@@ -70,13 +71,13 @@ export class FlightsOneWayComponent implements OnInit, OnDestroy{
 
   private _filterFrom(value: string): string[] {
     const filterValue = value.toLowerCase();
-    console.log('=> value', value, '==> airport Name', this.airportListDropdown[0].attributes.airportName);
-    return this.airportListDropdown.filter((data: any) => data.attributes.airportName.toLowerCase().includes(filterValue));
+    // console.log('=> value', value, '==> airport Name', this.airportListDropdown[0].attributes.airportName);
+    return this.airportListDropdown.filter((data: any) => data.attributes.airportName.toLowerCase().includes(filterValue) || data.attributes.countryName.toLowerCase().includes(filterValue) || data.attributes.airportCity.toLowerCase().includes(filterValue));
   }
 
   private _filterTo(value: string): string[] {
     const filterValue = value.toLowerCase();
-    return this.options.filter(option => option.toLowerCase().includes(filterValue));
+    return this.airportListDropdown.filter((data: any) => data.attributes.airportName.toLowerCase().includes(filterValue));
   }
 
   createForm() {
