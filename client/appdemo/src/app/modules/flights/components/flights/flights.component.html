@@ -1,1 +1,24 @@
-flights component works.
+<app-banner></app-banner>
+<!-- <div class="container-fluid"> -->
+  <mat-card class="card d-flex w-75 mx-auto banner-overlap" >
+    <!-- <mat-tab-group>
+      <mat-tab label="One way"> One way </mat-tab>
+      <mat-tab label="Round trip"> Round trip </mat-tab>
+      <mat-tab label="Multi city"> Multi city </mat-tab>
+    </mat-tab-group> -->
+
+    <mat-tab-group fitInkBarToContent>
+      <mat-tab label="ONE WAY">
+        <app-flights-one-way></app-flights-one-way>
+      </mat-tab>
+      <mat-tab label="ROUND TRIP"> 
+        <app-flights-round-trip></app-flights-round-trip>
+      </mat-tab>
+      <mat-tab label="MULTI CITY">
+        <app-flights-multi-city></app-flights-multi-city>
+      </mat-tab>
+    </mat-tab-group>
+
+  </mat-card>
+<!-- </div> -->
+

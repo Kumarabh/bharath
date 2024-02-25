@@ -16,34 +16,29 @@
 </mat-toolbar> -->
 
   <mat-toolbar color="primary" class="mat-elevation-z6">
-    <!-- <div fxShow="true" fxHide.gt-sm="true">
-      <button mat-icon-button (click)="sidenav.toggle()">
-        <mat-icon>menu</mat-icon>
-      </button>
-    </div> -->
-    <mat-icon style="color: yellow;">flight</mat-icon>
+    <!-- <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button> -->
+    <mat-icon style="color: #ffc107;">flight</mat-icon>
 
     <a mat-button class="companyName" routerLink="/">
-      <span>Bharat Travels</span>
+      <span>Bharath Continental</span>
     </a>
-    <span class="example-spacer"></span>
-    <div fxShow="true" fxHide.lt-md="true">
-      <button routerLink="" mat-button>Home</button>
-      <button routerLink="flights" mat-button>Flights</button>
-      <button routerLink="hotels" mat-button>Hotels</button>
-      <button routerLink="trains" mat-button>Trains</button>
-      <button routerLink="cabs" mat-button>Cabs</button>
-      <button routerLink="bus" mat-button>Bus</button>
-      <button routerLink="holidays" mat-button>Holidays</button>
+    <div class="justify-content-center" fxShow="true" fxHide.lt-md="true">
+      <button routerLink="" routerLinkActive="" mat-button>Home</button>
+      <button routerLink="flights" routerLinkActive="" mat-button>Flights</button>
+      <button routerLink="hotels" routerLinkActive="" mat-button>Hotels</button>
+      <button routerLink="trains" routerLinkActive="" mat-button>Trains</button>
+      <button routerLink="cabs" routerLinkActive="" mat-button>Cabs</button>
+      <button routerLink="bus" routerLinkActive="" mat-button>Bus</button>
+      <!-- <button routerLink="holidays" mat-button>Holidays</button> -->
 
-      <button [matMenuTriggerFor]="simpleDropdown" mat-button>test</button>
+      <!-- <button [matMenuTriggerFor]="simpleDropdown" mat-button>test</button>
       <mat-menu #simpleDropdown="matMenu">
         <button mat-menu-item>Term</button>
         <button mat-menu-item>Tax</button>
         <button mat-menu-item>Currency</button>
-      </mat-menu>
+      </mat-menu> -->
 
-      <button [matMenuTriggerFor]="complexDropdown" mat-button>Master</button>
+      <!-- <button [matMenuTriggerFor]="complexDropdown" mat-button>Master</button>
       <mat-menu #complexDropdown="matMenu">
         <button [matMenuTriggerFor]="company" mat-menu-item>Company</button>
         <button [matMenuTriggerFor]="customer" mat-menu-item>Customer</button>
@@ -68,26 +63,23 @@
       <mat-menu #variant="matMenu">
         <button mat-menu-item>Color</button>
         <button mat-menu-item>Size</button>
-      </mat-menu> 
-
+      </mat-menu>
+ -->
     </div>
 
   </mat-toolbar>
-  <!-- <mat-sidenav-container fxFlexFill class="example-container">
+  <!-- <mat-sidenav-container class="example-sidenav-container">
+    <mat-sidenav #snav [mode]="'over'" fixedTopGap="56">
+      <mat-nav-list>
+        <a mat-list-item routerLink="">Home</a>
+        <a mat-list-item routerLink="flights">Flights</a>
+        <a mat-list-item routerLink="hotels">Hotels</a>
+        <a mat-list-item routerLink="trains">Trains</a>
 
-    <mat-sidenav color="primary" #sidenav fxLayout="column" mode="over" opened="false" fxHide.gt-sm="true" style="min-width: 180px;">
-      <div fxLayout="column" style="overflow: hidden;">
-        <button routerLink="" mat-button>Home</button>
-      <button routerLink="flights" mat-button>Flights</button>
-      <button routerLink="hotels" mat-button>Hotels</button>
-      <button routerLink="trains" mat-button>Trains</button>
-      <button routerLink="cabs" mat-button>Cabs</button>
-      <button routerLink="bus" mat-button>Bus</button>
-      <button routerLink="holidays" mat-button>Holidays</button>
-      </div>
+      </mat-nav-list>
     </mat-sidenav>
-    <mat-sidenav-content fxFlexFill>
-      <router-outlet></router-outlet>
-    </mat-sidenav-content>
+
+    <mat-sidenav-content>
+</mat-sidenav-content>
   </mat-sidenav-container> -->
 </div>

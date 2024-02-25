@@ -7,11 +7,9 @@ import { FormGroup } from "@angular/forms";
   styleUrls: [`./navbar.component.scss`]
 })
 export class NavbarComponent implements OnInit {
-  badgevisible = false;
-  searchForm!: FormGroup;
-  dataResult: any;
-  cartLength: any;
-  userLoggedIn: any;
+  fillerNav = Array.from({length: 50}, (_, i) => `Nav Item ${i + 1}`);
+  mobileQuery!: MediaQueryList;
+
 
   constructor() {}
 
@@ -19,7 +17,4 @@ export class NavbarComponent implements OnInit {
       console.log('==> navbar component');
   }
   
-  badgevisibility() {
-    this.badgevisible = true;
-  }
 }

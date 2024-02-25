@@ -1,7 +1,61 @@
 /* You can add global styles to this file, and also import other style files */
-
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-navbar .docs-navbar-header {
+body { 
+  margin: 0; 
+  font-family: Roboto, 
+  "Helvetica Neue", 
+  sans-serif; 
+  // background: #e3e3e3;
+}
+@import "variables";
+@import "material-styles";
+.banner {
+  background: $theme-color;
+  min-height: 100px;
+}
+
+// .bolt-card-white {
+//   background-color: rgba(255,255,255,1);
+// }
+
+.card {
+  border-radius: 4px;
+  overflow: hidden;
+  padding: 20px 20px;
+}
+
+.banner-overlap {
+  margin-top: -50px;
+}
+// button.submit {
+//   background: #fff !important;
+//   border: 1px solid #3f51b5 !important;
+//   color:  #3f51b5 !important;
+//   height: 42px !important;
+//   width: 250px !important;
+//   border-radius: 5px !important;
+// }
+// button.submit:hover {
+//   background: #3f51b5 !important;
+//   color: white !important;
+// }
+
+// button.submit:disabled {
+//   border: 1px solid lightgray;
+//   color: gray;
+// }
+.mat-mdc-raised-button:not(:disabled) {
+  background: #fff !important;
+  border: 1px solid #3f51b5 !important;
+  color:  #3f51b5 !important;
+  // height: 42px !important;
+  // width: 250px !important;
+}
+.btn-rounded {
+  border-radius: 22px !important;
+
+}
+.mat-mdc-raised-button:not(:disabled):hover {
   background: #3f51b5 !important;
+  color: white !important;
 }

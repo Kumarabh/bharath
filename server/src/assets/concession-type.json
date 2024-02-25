@@ -1,0 +1,43 @@
+{
+  "code": "0",
+  "message": "",
+  "extendedMessage": null,
+  "status": "SUCCESS",
+  "hasError": false,
+  "responsePayload": {
+      "domainValues": [
+        {
+          "id": 1,
+          "attributes": {
+              "concessionValue": "NA",
+              "Title": "None",
+              "Title_slug": "none"
+          }
+      },
+          {
+              "id": 2,
+              "attributes": {
+                  "concessionValue": "MIL",
+                  "Title": "Armed Forces",
+                  "Title_slug": "armedForces"
+              }
+          },
+          {
+              "id": 7,
+              "attributes": {
+                  "concessionValue": "STU",
+                  "Title": "Student",
+                  "Title_slug": "student"
+              }
+          },
+          {
+              "id": 8,
+              "attributes": {
+                  "concessionValue": "SRC",
+                  "Title": "Senior Citizen",
+                  "Title_slug": "seniorCitizen"
+              }
+          }
+      ]
+  }
+}

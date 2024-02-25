@@ -1,1 +1,151 @@
-<p>flights-one-way works!</p>
+<div class="container-fluid mt-5" style="min-height: 400px;">
+  <form [formGroup]="flightsForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="col-md-6">
+        <mat-form-field appearance="outline" style="width: 420px;">
+          <mat-label>From</mat-label>
+          <input type="text"
+                 placeholder="From"
+                 matInput
+                 formControlName = "from"
+                 [matAutocomplete]="auto1">
+          <mat-autocomplete #auto1="matAutocomplete">
+              <mat-option *ngFor = "let data of airportListDropdown" [value]="data.attributes.airportName">
+                <!-- {{data.attributes.airportName}} -->
+          
+          <div class="mt-2">
+                    <p>{{data.attributes.airportCity}},  {{data.attributes.countryName}},  {{data.attributes.countryCode}}
+                    <br><span style="color: lightgray; font-size: 12px;">{{data.attributes.airportName}}</span>
+                    </p>
+                    
+                </div>
+                <!-- <mat-card style="display: block;">
+                  <mat-card-header>
+                    <mat-card-title> {{data.attributes.airportCity}},  {{data.attributes.countryName}},  {{data.attributes.countryCode}}</mat-card-title>
+                    <mat-card-subtitle>{{data.attributes.airportName}}</mat-card-subtitle>
+                  </mat-card-header>
+                  <mat-card-actions>
+                    <button mat-button>Flag</button>
+                  </mat-card-actions>
+                </mat-card> -->
+              </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+      </div>
+
+
+      <div class="col-md-6">
+        <mat-form-field appearance="outline" style="width: 420px;">
+          <mat-label>To</mat-label>
+          <input type="text"
+                 placeholder="To"
+                 matInput
+                 formControlName = "to"
+                 [matAutocomplete]="auto2">
+          <mat-autocomplete #auto2="matAutocomplete">
+              <mat-option *ngFor = "let option2 of filteredOptionsTo | async" [value]="option2">{{option2}}</mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </div>
+
+      
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <mat-form-field appearance="outline" style="width: 420px;">
+          <mat-label>Departure</mat-label>
+          <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" placeholder="Choose a date" formControlName="departureDate">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+      </div>
+
+      <div class="col-md-6">
+        <mat-form-field appearance="outline"  style="width: 420px;" >
+          <mat-label>Return date</mat-label>
+          <input matInput [min]="flightsForm.get('departureDate')?.value" [max]="maxDate" [matDatepicker]="pickers" placeholder="Choose a date" formControlName="returnDate">
+          <mat-datepicker-toggle matSuffix [for]="pickers"></mat-datepicker-toggle>
+          <mat-datepicker #pickers></mat-datepicker>
+        </mat-form-field>
+
+      </div>
+
+    </div>
+      <div formGroupName="travellers">
+
+        <div class="row">
+          <div class="col-md-4">
+            <mat-form-field appearance="outline">
+              <mat-label>Adults (12+ Yrs)</mat-label>
+              <input type="number" class="form-control" matInput name="noOfAdults" placeholder="Number of adults"
+                formControlName="noOfAdults">
+            </mat-form-field>
+
+          </div>
+
+          <div class="col-md-4">
+            <mat-form-field appearance="outline">
+              <mat-label>Children (2-12 Yrs)</mat-label>
+              <input type="number" class="form-control" matInput name="noOfChildren" placeholder="Number of children"
+                formControlName="noOfChildren">
+            </mat-form-field>
+          </div>
+
+          <div class="col-md-4">
+            <mat-form-field appearance="outline">
+              <mat-label>Infants (less than 2 yrs)</mat-label>
+              <input type="number" class="form-control" matInput name="noOfInfants" placeholder="Number of infants"
+                formControlName="noOfInfants">
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <!-- <mat-chip-listbox aria-label="Travel class" formControlName="class">
+          <mat-chip-option>Economy</mat-chip-option>
+          <mat-chip-option>Premium Economy</mat-chip-option>
+          <mat-chip-option color="accent" selected>Business</mat-chip-option>
+          <mat-chip-option color="warn">First Class</mat-chip-option>
+        </mat-chip-listbox> -->
+        <div class="col-md-4">
+          <mat-form-field appearance="outline">
+            <mat-label>Select a class</mat-label>
+            <mat-select name="food" formControlName = "classType">
+              <mat-option *ngFor = "let option of classTypesDropdown" [value]="option.attributes.classValue">{{option.attributes.className}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-4">
+          <mat-form-field appearance="outline">
+            <mat-label>Select a concession type</mat-label>
+            <mat-select name="food" formControlName = "concessionType">
+              <mat-option *ngFor = "let option of concessionTypesDropdown" [value]="option.attributes.Title_slug">{{option.attributes.Title}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+      </div>
+      <!-- <div class="row mt-3 mb-3">
+        <div class="col-md">
+          <mat-label>Select a fair type</mat-label> <br>
+          <mat-radio-group aria-label="Select an option" formControlName="fairType">
+            <mat-radio-button value="regular">Regular</mat-radio-button>
+            <mat-radio-button value="armed forces">Armed Forces</mat-radio-button>
+            <mat-radio-button value="senior citizen">Senior Citizen</mat-radio-button>
+            <mat-radio-button value="student">Student</mat-radio-button>
+            <mat-radio-button value="doctors&nurses">Doctors & nurses</mat-radio-button>
+          </mat-radio-group>
+        </div>
+      </div> -->
+
+      <div class="row mt-3">
+        <div class="col-md-3">
+          <button color="primary" mat-raised-button class="btn-rounded"  type="submit" [disabled]="!this.flightsForm.valid">Search flight</button>
+        </div>
+      </div>
+  </form>
+</div>
