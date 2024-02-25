@@ -1,4 +1,4 @@
-<div class="container-fluid mt-5" style="min-height: 400px;">
+<div class="container-fluid mt-5" >
   <form [formGroup]="flightsForm" (ngSubmit)="onSubmit()">
     <div class="row">
       <div class="col-md-6">
@@ -10,7 +10,6 @@
                  formControlName = "from"
                  [matAutocomplete]="auto1">
           <mat-autocomplete #auto1="matAutocomplete">
-             
               <mat-option *ngFor = "let data of filteredOptionsFrom | async" [value]="data.attributes.airportName" class="p-3">
                 <mat-card-title> {{data.attributes.airportCity}},  {{data.attributes.countryName}},  {{data.attributes.countryCode}}</mat-card-title>
                 <mat-card-subtitle>{{data.attributes.airportName}}</mat-card-subtitle>
@@ -29,16 +28,13 @@
                  formControlName = "to"
                  [matAutocomplete]="auto2">
           <mat-autocomplete #auto2="matAutocomplete">
-              <!-- <mat-option *ngFor = "let option2 of filteredOptionsTo | async" [value]="option2.attributes.airportName">{{option2.attributes.airportName}}</mat-option> -->
               <mat-option *ngFor = "let data of filteredOptionsTo | async" [value]="data.attributes.airportName" class="p-3">
                 <mat-card-title> {{data.attributes.airportCity}},  {{data.attributes.countryName}},  {{data.attributes.countryCode}}</mat-card-title>
                 <mat-card-subtitle>{{data.attributes.airportName}}</mat-card-subtitle>
               </mat-option>
             </mat-autocomplete>
         </mat-form-field>
-      </div>
-
-      
+      </div>      
     </div>
 
     <div class="row">
@@ -49,7 +45,6 @@
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
-
       </div>
 
       <div class="col-md-6">
@@ -59,23 +54,20 @@
           <mat-datepicker-toggle matSuffix [for]="pickers"></mat-datepicker-toggle>
           <mat-datepicker #pickers></mat-datepicker>
         </mat-form-field>
-
       </div>
-
     </div>
-      <div formGroupName="travellers">
 
+      <div formGroupName="travellers">
         <div class="row">
-          <div class="col-md-4">
-            <mat-form-field appearance="outline">
+          <div class="col-md-3">
+            <mat-form-field appearance="outline" >
               <mat-label>Adults (12+ Yrs)</mat-label>
               <input type="number" class="form-control" matInput name="noOfAdults" placeholder="Number of adults"
                 formControlName="noOfAdults">
             </mat-form-field>
-
           </div>
 
-          <div class="col-md-4">
+          <div class="col-md-3">
             <mat-form-field appearance="outline">
               <mat-label>Children (2-12 Yrs)</mat-label>
               <input type="number" class="form-control" matInput name="noOfChildren" placeholder="Number of children"
@@ -83,7 +75,7 @@
             </mat-form-field>
           </div>
 
-          <div class="col-md-4">
+          <div class="col-md-3">
             <mat-form-field appearance="outline">
               <mat-label>Infants (less than 2 yrs)</mat-label>
               <input type="number" class="form-control" matInput name="noOfInfants" placeholder="Number of infants"
@@ -93,14 +85,13 @@
         </div>
       </div>
 
-      <div class="row">
         <!-- <mat-chip-listbox aria-label="Travel class" formControlName="class">
           <mat-chip-option>Economy</mat-chip-option>
           <mat-chip-option>Premium Economy</mat-chip-option>
           <mat-chip-option color="accent" selected>Business</mat-chip-option>
           <mat-chip-option color="warn">First Class</mat-chip-option>
         </mat-chip-listbox> -->
-        <div class="col-md-4">
+        <div class="col-md-3">
           <mat-form-field appearance="outline">
             <mat-label>Select a class</mat-label>
             <mat-select name="food" formControlName = "classType">
@@ -108,6 +99,7 @@
             </mat-select>
           </mat-form-field>
         </div>
+        <div class="row">
 
         <div class="col-md-4">
           <mat-form-field appearance="outline">
@@ -119,20 +111,8 @@
         </div>
 
       </div>
-      <!-- <div class="row mt-3 mb-3">
-        <div class="col-md">
-          <mat-label>Select a fair type</mat-label> <br>
-          <mat-radio-group aria-label="Select an option" formControlName="fairType">
-            <mat-radio-button value="regular">Regular</mat-radio-button>
-            <mat-radio-button value="armed forces">Armed Forces</mat-radio-button>
-            <mat-radio-button value="senior citizen">Senior Citizen</mat-radio-button>
-            <mat-radio-button value="student">Student</mat-radio-button>
-            <mat-radio-button value="doctors&nurses">Doctors & nurses</mat-radio-button>
-          </mat-radio-group>
-        </div>
-      </div> -->
 
-      <div class="row mt-3">
+      <div class="row ">
         <div class="col-md-3">
           <button color="primary" mat-raised-button class="btn-rounded"  type="submit" [disabled]="!this.flightsForm.valid">Search flight</button>
         </div>
